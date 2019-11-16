@@ -4,9 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="assets/CSS/style.css">
+
+  <title>Project App</title>
 </head>
 <body>
-  <h1>Hello!</h1>
+  <div class="container">
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">Title of web app</h1>
+        <p class="lead">Find out what is happening in your area.</p>
+      </div>
+    </div>
+    <div id="search"></div><!--div for search radius and likes-->
+    <div id="main-body">
+      <div class="row my-10">
+        <div class="col-lg-3">
+          <div class="card" style="width: 16rem;">
+            <img src="assets/Images/bar.png" class="card-img-top" alt="bars">
+            <div class="card-body">
+              <h5 class="card-title">Bars</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button id="get-bars" class="btn btn-primary">Get Reults</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card" style="width: 16rem;">
+            <img src="assets/Images/restaurant.png" class="card-img-top" alt="restaurants">
+            <div class="card-body">
+              <h5 class="card-title">Restaurants</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button id="get-restaurants" class="btn btn-primary">Get Reults</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card" style="width: 16rem;">
+            <img src="assets/Images/concert.png" class="card-img-top" alt="concert">
+            <div class="card-body">
+              <h5 class="card-title">Concerts</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button id="get-cencerts" class="btn btn-primary">Get Reults</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card" style="width: 16rem;">
+            <img src="assets/Images/hiking.png" class="card-img-top" alt="hiking">
+            <div class="card-body">
+              <h5 class="card-title">Trails and Hiking</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button id="get-hiking" class="btn btn-primary">Get Reults</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
+
+    <script src="assets/javascript/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+body {
+
+}
+
+h5 {
+  font-weight: bold;
+}
+
+.jumbotron {
+  color: white;
+  background-color:black;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card {
+  width: auto;
+  border: 5px solid black;
+}
+
