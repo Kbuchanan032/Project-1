@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 function getInfo(){
     $.ajax({
-        url: 'http://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&key='+apiKey,
+        url: 'http://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&name=harbour&key='+apiKey,
         method: "GET"
     }).then(function(response){
         console.log(response);
