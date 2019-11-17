@@ -146,6 +146,12 @@ header{
     height: 100vh;
      
 }
+.mapLocation{
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+     
+}
 
 .myHeader-box {
     position: absolute;
@@ -193,3 +199,31 @@ header{
 .main-nav li a:active{
    border-bottom: 2px solid #e67e22;
 }
+
+/* Map */
+#mapNearPlaces  {
+    height: 50%;
+    width: 100%;
+  }
+
+/* Images places-showcase */
+ .places-showcase{
+   list-style: none;
+   width: 100%;
+
+ }
+ .places-showcase li{
+    display: block; 
+    float: left;
+    width:25%;
+ }
+
+ .place-photo{
+     width: 100%;
+     margin: 0;
+ }
+
+ .place-photo img{
+     width: 100%;
+     height: auto;
+ }
