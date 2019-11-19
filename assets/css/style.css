@@ -156,7 +156,7 @@ header{
 .myHeader-box {
     position: absolute;
     width: 1140px;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
