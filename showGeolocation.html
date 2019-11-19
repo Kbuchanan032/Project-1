@@ -31,6 +31,10 @@
       h2 {
           color: #fff;
       }
+
+      .place-photo{
+        color: #fff;
+      }
     </style>
   </head>
   <body>
@@ -53,26 +57,26 @@
             <ul class="places-showcase">
                <li>
                     <figure class="place-photo">
-                        <div id="display-img1"><a href="https://maps.google.com/maps/contrib/1049…7244746379/photos">Oregano&#39;s Pizza Bistro</a></div>
+                        <div id="display-img1"></div>
                     </figure>
 
                </li> 
                 
                <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img2"></div>
                     </figure>
 
                </li>
                <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img3"></div>
                     </figure>
 
                </li>
                <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img4"></div>
                     </figure>
 
                </li>
@@ -80,25 +84,25 @@
             <ul class="places-showcase">
                 <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img5"></div>
                     </figure>
         
                 </li>
                 <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img6"></div>
                     </figure>
             
                 </li>
                 <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img7"></div>
                     </figure>
             
                 </li>
                 <li>
                     <figure class="place-photo">
-                        <div id="display-img1"></div>
+                        <div id="display-img8"></div>
                     </figure>
             
                 </li>
@@ -130,10 +134,11 @@
           location: userCity,
           radius: '2000',
           types: ['restaurant', 'Bars', 'night clubs'],
+          
           };
 
           infoWindow = new google.maps.InfoWindow;
-            console.log(userCity)
+           // console.log(userCity)
             service = new google.maps.places.PlacesService(map);
             service.nearbySearch(request, callback);
 
@@ -157,11 +162,14 @@
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-
+      
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 var place = results[i];
+                var localPlaces = $('#display-img'+ [i+1]);
+                var placesName = $("<p>" + localPlaces + "</p>")
+                localPlaces.append(place.name + "<br>" + place.vicinity )
                 console.log(place);
                 createMarker(results[i]);
             }
@@ -180,6 +188,9 @@
         });
     }
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap" async defer>
     </script>
   </body>
