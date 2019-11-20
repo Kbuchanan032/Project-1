@@ -23,8 +23,8 @@ $.ajax(settings).done(function(response) {
     method: "GET"
   };
 
-  $.ajax(settings).done(function(response) {
-		console.log(response);
+  $.ajax(settings).done(function(forecast) {
+		console.log(forecast);
 		
   });
 });
