@@ -25,11 +25,10 @@ function initMap() {
   //         //createMarker(results[i]);
   //         console.log(results[i]);
   //       }
-
   //       map.setCenter(results[0].geometry.location);
   //     }
   //   });
-}
+
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
