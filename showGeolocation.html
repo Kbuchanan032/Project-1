@@ -32,9 +32,23 @@
           color: #fff;
       }
 
-      .place-photo{
+      #show_details{
         color: #fff;
+        
       }
+      
+      img {
+        width: 180px;
+        height: 100px;
+        margin:15px;
+        transform: scale(1);
+        
+      }
+      img:hover{
+        transform: scale(1.5);
+        transition: transform 0.5s;
+      }
+      
     </style>
   </head>
   <body>
@@ -54,155 +68,30 @@
         <div id="mapNearPlaces"></div>
         <section class="found-Places">
             <h2>Places Found</h2>
-            <div id="place-list"></div>
-            <ul class="places-showcase">
-               <li>
-                    <figure class="place-photo">
-                        <div id="display-img1"></div>
-                    </figure>
-
-               </li> 
-                
-               <li>
-                    <figure class="place-photo">
-                        <div id="display-img2"></div>
-                    </figure>
-
-               </li>
-               <li>
-                    <figure class="place-photo">
-                        <div id="display-img3"></div>
-                    </figure>
-
-               </li>
-               <li>
-                    <figure class="place-photo">
-                        <div id="display-img4"></div>
-                    </figure>
-
-               </li>
-            </ul>
-            <ul class="places-showcase">
-                <li>
-                    <figure class="place-photo">
-                        <div id="display-img5"></div>
-                    </figure>
-        
-                </li>
-                <li>
-                    <figure class="place-photo">
-                        <div id="display-img6"></div>
-                    </figure>
+            <div class="row">
+              <div class="col-lg-4">
+                <div id="show_details" style="width:auto;"></div>
+              </div>
+              <div class="col-lg-4">
+                  
+                </div>
+              <div class="col-lg-4">
+                <div id="show_images"></div>
+              </div>
+            </div>
             
-                </li>
-                <li>
-                    <figure class="place-photo">
-                        <div id="display-img7"></div>
-                    </figure>
             
-                </li>
-                <li>
-                    <figure class="place-photo">
-                        <div id="display-img8"></div>
-                    </figure>
+
             
-                </li>
-            </ul>
+
         </section>
     
-    <script>
-      
-      var map, infoWindow, photoRef;
-      function initMap() {
-        
-        
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            var userCity = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-           
-            map = new google.maps.Map(document.getElementById('mapNearPlaces'), {
-            center: userCity ,
-            zoom: 13
-          });
-
-          var request = {
-          location: userCity,
-          radius: '2000',
-          types: ['restaurant', 'Bars', 'night clubs'],
-          
-          };
-
-          infoWindow = new google.maps.InfoWindow;
-           // console.log(userCity)
-            service = new google.maps.places.PlacesService(map);
-            service.nearbySearch(request, callback);
-
-            // infoWindow.setPosition(pos);
-            // infoWindow.setContent('Location found.');
-            // infoWindow.open(map);
-            // map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-    var photoRef; 
-    function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                // if (results[i].photos && Array.isArray(results[i].photos)) {
-                //   photoRef = results[i].photos[0].photo_reference;
-                //   console.log(photoRef);
-                // }
-                var localPlaces = $('#display-img'+ [i+1]);
-                var placesName = $("<p>" + localPlaces + "</p>")
-                localPlaces.append(place.name + "<br>" + place.vicinity )
-                photoRef = place.photos[0].getUrl({maxWidth: 400, maxHeight: 400});
-                var img = document.createElement("img");
-                img.setAttribute('src', photoRef + "photo.jpg");
-                document.getElementById('place-list').appendChild(img);
-                console.log(place);
-                createMarker(results[i]);
-            }
-        }
-   }  
-
-    function createMarker(place) {
-        var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name);
-            infowindow.open(map, this);
-        });
-    }
-    </script>
+   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap" async defer></script>
-<!--<script src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=960&photoreference='+ photoRef + '&key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap' async defer></script>-->
-
+    <script src="assets/js/javascrip.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap&photo?maxwidth=400" async defer>
     </script>
   </body>
 </html>
