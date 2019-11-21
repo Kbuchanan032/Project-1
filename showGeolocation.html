@@ -54,6 +54,7 @@
         <div id="mapNearPlaces"></div>
         <section class="found-Places">
             <h2>Places Found</h2>
+            <div id="place-list"></div>
             <ul class="places-showcase">
                <li>
                     <figure class="place-photo">
@@ -111,7 +112,7 @@
     
     <script>
       
-      var map, infoWindow;
+      var map, infoWindow, photoRef;
       function initMap() {
         
         
@@ -162,14 +163,22 @@
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-      
+    var photoRef; 
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 var place = results[i];
+                // if (results[i].photos && Array.isArray(results[i].photos)) {
+                //   photoRef = results[i].photos[0].photo_reference;
+                //   console.log(photoRef);
+                // }
                 var localPlaces = $('#display-img'+ [i+1]);
                 var placesName = $("<p>" + localPlaces + "</p>")
                 localPlaces.append(place.name + "<br>" + place.vicinity )
+                photoRef = place.photos[0].getUrl({maxWidth: 400, maxHeight: 400});
+                var img = document.createElement("img");
+                img.setAttribute('src', photoRef + "photo.jpg");
+                document.getElementById('place-list').appendChild(img);
                 console.log(place);
                 createMarker(results[i]);
             }
@@ -191,7 +200,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap" async defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap" async defer></script>
+<!--<script src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=960&photoreference='+ photoRef + '&key=AIzaSyAirI4H5b9p94B9ZkgEX0a_r_NIOt5RktY&libraries=places&callback=initMap' async defer></script>-->
+
     </script>
   </body>
 </html>

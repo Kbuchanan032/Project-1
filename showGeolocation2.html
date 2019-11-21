@@ -32,9 +32,23 @@
           color: #fff;
       }
 
-      #show_images{
+      #show_details{
         color: #fff;
+        
       }
+      
+      img {
+        width: 180px;
+        height: 100px;
+        margin:15px;
+        transform: scale(1);
+        
+      }
+      img:hover{
+        transform: scale(1.5);
+        transition: transform 0.5s;
+      }
+      
     </style>
   </head>
   <body>
@@ -54,7 +68,22 @@
         <div id="mapNearPlaces"></div>
         <section class="found-Places">
             <h2>Places Found</h2>
-            <div id="show_images" style="width:auto;"></div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div id="show_details" style="width:auto;"></div>
+              </div>
+              <div class="col-lg-4">
+                  
+                </div>
+              <div class="col-lg-4">
+                <div id="show_images"></div>
+              </div>
+            </div>
+            
+            
+
+            
+
         </section>
     
     <script>
@@ -120,16 +149,20 @@
                     console.log(status)
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
                       console.log(place)
-                      var localPlaces = $('#show_images');
-                      var placesName = $("<p>" + localPlaces + "</p><br>")
-                      localPlaces.append(place.name + "<br>" + place.vicinity + "<br>" + place.formatted_phone_number + "<br>")
+                      var localPlaces = $('#show_details');
+                      var divImage = $("#show_images")
+                      var placeImage = $('<img/>')
+                      placeImage.attr('src', place.photos[0].getUrl({maxWidth: '200', maxHeight: '200'}));
+                      placeImage.appendTo(divImage)
+                      var placesName = $("<div>" + localPlaces + "</div><br>")
+                      localPlaces.append("<br>" + place.name + "<br>" + place.vicinity + "<br>" + place.formatted_phone_number + "<br>")
                       var marker = new google.maps.Marker({
                         map: map,
-                        position: place.geometry.location
+                        position: place.geometry.location                      
                       });
                       google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent(place.name);
-                        infowindow.open(map, this);
+                        infoWindow.setContent(place.name);
+                        infoWindow.open(map, this);
                       });
                     }
                 });
