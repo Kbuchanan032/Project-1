@@ -82,3 +82,10 @@ function callback(results, status) {
   }
 }  
 
+// $(document).ready(function(){
+//   $("#moreOptions").hide();
+//   $("#showMore").click(function(){
+//     $("#moreOptions").show()
+//   });
+// });
+
