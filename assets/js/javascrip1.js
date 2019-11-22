@@ -3,16 +3,16 @@ var service;
 var infowindow;
 
 function initMap() {
-  var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+  var Tucson = new google.maps.LatLng(32.22154, -110.92660);
 
   map = new google.maps.Map(document.getElementById("map"), {
-    center: pyrmont,
+    center: Tucson,
     zoom: 15
   });
 
   var request = {
-    location: pyrmont,
-    radius: "500",
+    location: Tucson,
+    radius: "5000",
     type: ["restaurant", "Bars"]
   };
 
