@@ -71,6 +71,11 @@ section{
 
 }
 
+.moreOptions {
+    background-color: rgb(245, 245, 245);
+    
+}
+
 .box {
     padding: 1%;
 }
