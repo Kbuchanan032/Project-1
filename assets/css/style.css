@@ -46,6 +46,7 @@ h2 {
     font-size: 180%;
     word-spacing: 2px;
     text-align: center;
+    color: #fff;
     margin-bottom: 30px;
     letter-spacing: 1px;
     
@@ -72,7 +73,9 @@ section{
 }
 
 .moreOptions {
-    background-color: rgb(245, 245, 245);
+    /* background-color: rgb(245, 245, 245); */
+    margin: 100px auto;
+    
     
 }
 
@@ -102,7 +105,9 @@ section{
 }
 
 /*Buttons*/
-
+.btn-full{
+	border: 1px solid #e67e22;
+}
 .btn:link,
 .btn:visited {
     display: inline-block;
@@ -312,4 +317,12 @@ header{
 
  .instagram:hover{
      color: #517fa4;
+ }
+
+ /*Cards*/
+ .card-body{
+    color: #ddd;
+		border: 4px solid #e67e22;
+		background-color:  rgba(85,85,85)
+		
  }
